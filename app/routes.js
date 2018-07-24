@@ -1,10 +1,19 @@
 var User = require('./models/User');
+var Idea = require('./models/Idea');
 
 module.exports = function(app) {
 
 	app.get("/", isLoggedIn, function(req, res)
 	{
-		res.sendfile("./public/pages/main.html");	
+		//var resultArray = [];
+
+		//Idea.find({}, function(err, idea)
+		//{
+		//	resultArray.push(idea);
+		//});
+
+		//res.render("../public/pages/main", {items: resultArray});
+		res.sendfile('./public/pages/main.html');
 	});
 
 	app.get("/login", function(req, res)
@@ -39,7 +48,7 @@ module.exports = function(app) {
 		});
 	});
 
-	app.get("/api/logout", function(req, res)
+	app.get("/api/logout", isLoggedIn, function(req, res)
 	{
 		console.log("Logging out");
 		req.session.destroy();
@@ -48,14 +57,55 @@ module.exports = function(app) {
 		res.redirect("/login");
 	});
 
-	app.post("/api/idea/create", isLoggedIn, function(req, res)
+	app.post("/api/user/register", function(req, res)
 	{
-		// do insert here
+		User.findOne({ username: req.body.username}, function(err, user)
+		{
+			if (err)
+			{
+				console.log("Error");
+				res.redirect("/login");
+			}
+			else if (user)
+			{
+				console.log("User already exists");
+				res.redirect("/login");
+			}
+		});
 
-		res.redirect("/");
+		var newUser = User(
+			{
+				username: req.body.username,
+				password: req.body.password
+			});
+
+		newUser.save(function(err, idea)
+		{
+			req.session.isAuthenticated = true;
+			req.session.username = req.body.username;
+
+			res.redirect("/");
+		});
 	});
 
-	app.get("*", function(req, res)
+	app.post("/api/idea/submit", isLoggedIn, function(req, res)
+	{
+		console.log("We got to the server.");
+		var newIdea = Idea(
+			{
+				title: req.body.title,
+				tags: req.body.tags,
+				idea: req.body.idea,
+				creator: req.session.username
+			});
+
+		newIdea.save(function(err, idea)
+		{
+			res.redirect("/");
+		});
+	});
+
+	app.get("*", isLoggedIn, function(req, res)
 	{
 		res.redirect("/");
 	});

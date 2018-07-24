@@ -1,5 +1,41 @@
-<div class="jumbotron text-center">
-	<h1>Submit</h1>
+<form class="form-horizontal" action="/api/idea/submit" id="submitform" method="post" accept-charset="utf-8">
+	<fieldset>
+	<div align="center">
+	<!-- Text input-->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="title">Title</label>  
+	  <div class="col-md-4">
+	  <input name="title" class="form-control input-md" id="title" required="" type="text" placeholder="Your idea's title">
+		
+	  </div>
+	</div>
+	
+	<!-- Text input-->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="tags">Tags</label>  
+	  <div class="col-md-4">
+	  <input name="tags" class="form-control input-md" id="tags" type="text" placeholder="Comma separated tags">
+		
+	  </div>
+	</div>
+	
+	<!-- Text input-->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="idea">Idea</label>  
+	  <div class="col-md-4">
+	  <textarea name="idea" class="form-control" rows="6" cols="100" id="idea" required="" type="text" placeholder="Your idea"></textarea>
+		
+	  </div>
+	</div>
 
-	<p>{{ tagline }}</p>
-</div>
+	<!-- Button -->
+	<div class="form-group">
+	  <div class="col-md-4">
+		<button name="submitbutton" class="btn btn-primary" id="submitbutton">Submit</button>
+	  </div>
+	</div>
+	</div>
+	
+	</fieldset>
+	</form>
+	
