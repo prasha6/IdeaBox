@@ -3,6 +3,7 @@
   "main": "server.js",
   "dependencies": {
     "express": "latest",
+    "express-session": "latest",
     "mongoose": "latest",
     "body-parser": "latest",
     "method-override": "latest"

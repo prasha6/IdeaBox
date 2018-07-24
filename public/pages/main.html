@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<base href="/">
 
-	<title>Starter Node and Angular</title>
+	<title>IdeaBox</title>
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
@@ -16,24 +16,23 @@
 
 	<!-- ANGULAR CUSTOM -->
 	<script src="js/controllers/MainCtrl.js"></script>
-	<script src="js/controllers/NerdCtrl.js"></script>
-	<script src="js/services/NerdService.js"></script>
-	<script src="js/controllers/GeekCtrl.js"></script>
-	<script src="js/services/GeekService.js"></script>
+	<script src="js/controllers/ProfileCtrl.js"></script>
+	<script src="js/controllers/SubmitCtrl.js"></script>
 	<script src="js/appRoutes.js"></script>
 	<script src="js/app.js"></script>
 </head>
-<body ng-app="sampleApp" ng-controller="NerdController">
+<body ng-app="IdeaBoxApp" ng-controller="MainController">
 <div class="container">
 	
 	<!-- HEADER -->
 	<nav class="navbar navbar-inverse">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="/">Stencil: Node and Angular</a>
+			<a class="navbar-brand" href="/">IdeaBox</a>
 		</div>
 		<ul class="nav navbar-nav">
-			<li><a href="/nerds">Nerds</a></li>
-			<li><a href="/geeks">Geeks</a></li>
+			<li><a href="/profile">Profile</a></li>
+			<li><a href="/submit">Submit Idea</a></li>
+			<li><a href="/api/logout" target="_self">Logout</a></li>
 		</ul>
 	</nav>
 

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<base href="/">
+
+	<title>Login</title>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css"> <!-- custom styles -->
+</head>
+<body>
+<div class="container">
+	<form action="/api/login" method="post">
+		<div>
+			<label>Username:</label>
+			<input type="text" name="username"/>
+		</div>
+		<div>
+			<label>Password:</label>
+			<input type="password" name="password"/>
+		</div>
+		<div>
+			<input type="submit" value="Log In"/>
+		</div>
+	</form>
+</div>
+</body>
+</html>

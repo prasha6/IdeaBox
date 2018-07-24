@@ -4,6 +4,7 @@ var app            = express();
 var mongoose       = require('mongoose');
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
+var session        = require('express-session');
 
 // configuration ===========================================
 	
@@ -11,7 +12,7 @@ var methodOverride = require('method-override');
 var db = require('./config/db');
 
 var port = process.env.PORT || 8080; // set our port
-// mongoose.connect(db.url); // connect to our mongoDB database (commented out after you enter in your own credentials)
+mongoose.connect(db.url, {useNewUrlParser: true}); // connect to our mongoDB database (commented out after you enter in your own credentials)
 
 // get all data/stuff of the body (POST) parameters
 app.use(bodyParser.json()); // parse application/json 
@@ -20,6 +21,8 @@ app.use(bodyParser.urlencoded({ extended: true })); // parse application/x-www-f
 
 app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUT
 app.use(express.static(__dirname + '/public')); // set the static files location /public/img will be /img for users
+
+app.use(session({secret: 'S3CRE7', resave: false, saveUninitialized: true, cookie: {maxAge: 3600000}}));
 
 // routes ==================================================
 require('./app/routes')(app); // pass our application into our routes
