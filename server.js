@@ -24,6 +24,8 @@ app.use(express.static(__dirname + '/public')); // set the static files location
 
 app.use(session({secret: 'S3CRE7', resave: false, saveUninitialized: true, cookie: {maxAge: 3600000}}));
 
+app.set('view engine', 'hbs');
+
 // routes ==================================================
 require('./app/routes')(app); // pass our application into our routes
 

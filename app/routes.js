@@ -5,15 +5,7 @@ module.exports = function(app) {
 
 	app.get("/", isLoggedIn, function(req, res)
 	{
-		//var resultArray = [];
-
-		//Idea.find({}, function(err, idea)
-		//{
-		//	resultArray.push(idea);
-		//});
-
-		//res.render("../public/pages/main", {items: resultArray});
-		res.sendfile('./public/pages/main.html');
+		res.sendfile("./public/pages/main.html");
 	});
 
 	app.get("/login", function(req, res)
@@ -102,6 +94,18 @@ module.exports = function(app) {
 		newIdea.save(function(err, idea)
 		{
 			res.redirect("/");
+		});
+	});
+
+
+	app.get("/api/get/ideas", isLoggedIn, function(req, res)
+	{
+		console.log("getting ideas from server");
+		Idea.find({}, function(err, idea)
+		{			
+
+			// res.sendfile('./public/pages/main.html');
+			res.render("../public/views/home.hbs", {items: idea});
 		});
 	});
 

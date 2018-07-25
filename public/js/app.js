@@ -1,1 +1,1 @@
-angular.module('IdeaBoxApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'ProfileCtrl', 'SubmitCtrl']);
+angular.module('IdeaBoxApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'ProfileCtrl', 'SubmitCtrl', 'HomeCtrl']);

@@ -1,0 +1,11 @@
+<div class="jumbotron text-center">
+	{{# each items}}
+		<article class="item">
+			<div align='left'><b>Title: </b>{{ this.title }}</div>
+			<div align='left'><b>Idea: </b>{{this.idea}}</div>
+			<div align='left'><b>Creator: </b>{{this.creator}}</div>
+			<div align='left'><b>Tags: </b>{{this.tags}}</div>
+			<hr></hr>
+		</article>
+	{{/each}}
+</div>

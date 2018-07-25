@@ -2,10 +2,12 @@
   "name": "ideabox",
   "main": "server.js",
   "dependencies": {
+    "body-parser": "latest",
     "express": "latest",
     "express-session": "latest",
-    "mongoose": "latest",
-    "body-parser": "latest",
-    "method-override": "latest"
+    "hbs": "^4.0.1",
+    "jade": "^1.11.0",
+    "method-override": "latest",
+    "mongoose": "latest"
   }
 }
